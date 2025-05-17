@@ -1,0 +1,300 @@
+"use client"
+
+import Link from "next/link"
+import { ArrowUpRight, TrendingDown } from "lucide-react"
+import { Card, CardContent } from "@/components/ui/card"
+import { Badge } from "@/components/ui/badge"
+import { Button } from "@/components/ui/button"
+import { useEffect } from "react"
+
+// Sample domain data - replace with your actual domains
+const domains = [
+  {
+    name: "GenerateChat.com",
+    price: "SOLD",
+    minOffer: "SOLD",
+    url: "",
+  },
+  {
+    name: "BuildHacks.com",
+    price: "$495",
+    minOffer: "$200",
+    url: "https://buildhacks.com",
+  },
+  {
+    name: "TalentAdvertising.com",
+    price: "$495",
+    minOffer: "$200",
+    url: "https://talentadvertising.com",
+  },
+  {
+    name: "GymSetups.com",
+    price: "$495",
+    minOffer: "$200",
+    url: "https://gymsetups.com",
+  },
+  {
+    name: "SourcingLead.com",
+    price: "$495",
+    minOffer: "$200",
+    url: "https://sourcinglead.com",
+  },
+  {
+    name: "TripLifestyle.com",
+    price: "$495",
+    minOffer: "$200",
+    url: "https://triplifestyle.com",
+  },
+  {
+    name: "DrawnStudio.com",
+    price: "$495",
+    minOffer: "$200",
+    url: "https://drawnstudio.com",
+  },
+  {
+    name: "TicketBuilders.com",
+    price: "SOLD",
+    minOffer: "SOLD",
+    url: "",
+  },
+  {
+    name: "BrandPrivate.com",
+    price: "$495",
+    minOffer: "$200",
+    url: "https://brandprivate.com",
+  },
+  {
+    name: "MediaBundles.com",
+    price: "$495",
+    minOffer: "$200",
+    url: "https://mediabundles.com",
+  },
+  {
+    name: "PayoutLoan.com",
+    price: "$495",
+    minOffer: "$200",
+    url: "https://payoutloan.com",
+  },
+  {
+    name: "Mineforged.com",
+    price: "$495",
+    minOffer: "$200",
+    url: "https://mineforged.com",
+  },
+  {
+    name: "TrialChambers.com",
+    price: "$495",
+    minOffer: "$200",
+    url: "https://trialchambers.com",
+  },
+  {
+    name: "JewelMC.com",
+    price: "$495",
+    minOffer: "$200",
+    url: "https://jewelmc.com",
+  },
+  {
+    name: "ProjectRune.com",
+    price: "$495",
+    minOffer: "$200",
+    url: "https://projectrune.com",
+  },
+  {
+    name: "CarResell.com",
+    price: "$495",
+    minOffer: "$200",
+    url: "https://carresell.com",
+  },
+  {
+    name: "WaterAquarium.com",
+    price: "$495",
+    minOffer: "$200",
+    url: "https://wateraquarium.com",
+  },
+  {
+    name: "LuggageSizes.com",
+    price: "$495",
+    minOffer: "$200",
+    url: "https://luggagesizes.com",
+  },
+  {
+    name: "LoveBaked.com",
+    price: "$495",
+    minOffer: "$200",
+    url: "https://lovebaked.com",
+  },
+  {
+    name: "ElitePill.com",
+    price: "$495",
+    minOffer: "$200",
+    url: "https://elitepill.com",
+  },
+  {
+    name: "MineQuests.com",
+    price: "$495",
+    minOffer: "$200",
+    url: "https://minequests.com",
+  },
+  {
+    name: "VaultRPG.com",
+    price: "$495",
+    minOffer: "$200",
+    url: "https://vaultrpg.com",
+  },
+  {
+    name: "DomainExcellence.com",
+    price: "$495",
+    minOffer: "$200",
+    url: "https://domainexcellence.com",
+  },
+  {
+    name: "RepairedHome.com",
+    price: "$495",
+    minOffer: "$200",
+    url: "https://repairedhome.com",
+  },
+]
+
+// Type definition for window with v7Analytics
+declare global {
+  interface Window {
+    v7Analytics?: {
+      trackPageView: (data: any) => void
+      trackEvent: (data: any) => void
+    }
+    trackDomainInteraction?: (domainName: string) => void
+  }
+}
+
+export default function Home() {
+  useEffect(() => {
+    // Function to track page view
+    const trackPageView = () => {
+      if (typeof window !== "undefined" && window.v7Analytics) {
+        console.log("Tracking page view")
+        window.v7Analytics.trackPageView({
+          url: window.location.href,
+          referrer: document.referrer,
+          title: document.title,
+          timestamp: new Date().toISOString(),
+        })
+      } else {
+        console.log("V7 Analytics not available for page view")
+      }
+    }
+
+    // Function to track domain interaction
+    const trackInteraction = (domainName: string) => {
+      if (typeof window !== "undefined" && window.v7Analytics) {
+        console.log(`Tracking interaction with domain: ${domainName}`)
+        window.v7Analytics.trackEvent({
+          event: "domain_click",
+          properties: {
+            domain: domainName,
+            timestamp: new Date().toISOString(),
+          },
+        })
+      } else {
+        console.log("V7 Analytics not available for domain interaction")
+      }
+    }
+
+    // Add a small delay to ensure the analytics script has loaded
+    const timer = setTimeout(() => {
+      trackPageView()
+      // Add to window for global access
+      window.trackDomainInteraction = trackInteraction
+    }, 500)
+
+    return () => clearTimeout(timer)
+  }, [])
+
+  const handleDomainClick = (domainName: string) => {
+    if (window.trackDomainInteraction) {
+      window.trackDomainInteraction(domainName)
+    } else {
+      console.log("trackDomainInteraction not available")
+    }
+  }
+
+  return (
+    <div className="min-h-screen bg-white">
+      <header className="container mx-auto py-10 text-center">
+        <Badge
+          variant="outline"
+          className="bg-black text-white border-0 px-4 py-1 text-sm font-medium rounded-full mb-4"
+        >
+          WHOLESALE PRICES
+        </Badge>
+        <h1 className="text-4xl font-bold tracking-tight text-black mb-3">Wholesale Domain Marketplace</h1>
+        <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+          Unbeatable prices on aftermarket domains. Direct wholesale to you.
+        </p>
+      </header>
+
+      <main className="container mx-auto px-4 py-6 mb-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+          {domains.map((domain) => (
+            <Link
+              href={domain.url || "#"}
+              key={domain.name}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={`group block ${domain.price === "SOLD" ? "pointer-events-none" : ""}`}
+              onClick={() => handleDomainClick(domain.name)}
+            >
+              <Card className="overflow-hidden border border-gray-200 hover:border-purple-300 hover:shadow-sm transition-all duration-200">
+                <CardContent className="p-4">
+                  <div className="grid grid-cols-[1fr,auto] gap-4">
+                    {/* Left column - Domain name and prices */}
+                    <div>
+                      <h3 className="text-lg font-medium text-black mb-4 truncate group-hover:text-purple-500 transition-colors duration-200">
+                        {domain.name}
+                      </h3>
+
+                      <div className="space-y-3">
+                        <div>
+                          <p className="text-xs uppercase font-medium text-gray-500 mb-1">Wholesale Price</p>
+                          <p className="text-base font-bold text-black">{domain.price}</p>
+                        </div>
+
+                        <div>
+                          <p className="text-xs uppercase font-medium text-gray-500 mb-1">Min Offer</p>
+                          <p className="text-sm font-medium text-purple-500 flex items-center">
+                            <TrendingDown className="h-3 w-3 mr-1 inline-block" />
+                            {domain.minOffer}
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Right column - Arrow icon and button */}
+                    <div className="flex flex-col items-end justify-between">
+                      <div className="bg-gray-100 rounded-full h-6 w-6 flex items-center justify-center group-hover:bg-purple-100 transition-colors duration-200">
+                        <ArrowUpRight className="h-3 w-3 text-gray-500 group-hover:text-purple-500 transition-colors duration-200" />
+                      </div>
+
+                      {domain.price === "SOLD" ? (
+                        <Button disabled className="w-full mt-4 bg-gray-300 text-gray-600 h-9 cursor-not-allowed">
+                          Sold
+                        </Button>
+                      ) : (
+                        <Button className="w-full mt-4 bg-black hover:bg-purple-500 transition-colors duration-200 h-9">
+                          Buy Now
+                        </Button>
+                      )}
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+            </Link>
+          ))}
+        </div>
+      </main>
+
+      <footer className="container mx-auto py-6 text-center text-gray-500 border-t border-gray-100 text-sm">
+        <p>© {new Date().getFullYear()} UnclaimedName. All rights reserved.</p>
+      </footer>
+    </div>
+  )
+}
