@@ -16,6 +16,12 @@ const domains = [
     url: "",
   },
   {
+    name: "CarDrifts.com",
+    price: "$495",
+    minOffer: "$200",
+    url: "https://cardrifts.com",
+  },
+  {
     name: "BuildHacks.com",
     price: "$495",
     minOffer: "$200",
