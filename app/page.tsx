@@ -10,6 +10,12 @@ import { useEffect } from "react"
 // Sample domain data - replace with your actual domains
 const domains = [
   {
+    name: "WebsiteBooking.com",
+    price: "$495",
+    minOffer: "200",
+    url: "https://websitebooking.com",
+  },
+  {
     name: "GenerateChat.com",
     price: "SOLD",
     minOffer: "SOLD",
@@ -32,6 +38,12 @@ const domains = [
     price: "$495",
     minOffer: "$200",
     url: "https://talentadvertising.com",
+  },
+  {
+    name: "SilverAutocare.com",
+    price: "$495",
+    minOffer: "$200",
+    url: "https://silverautocare.com",
   },
   {
     name: "GymSetups.com",
