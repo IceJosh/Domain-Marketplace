@@ -251,7 +251,7 @@ export default function Home() {
     } else {
       console.log("trackDomainInteraction not available")
     }
-  }
+      }
 
   return (
     <div className="min-h-screen bg-white">
@@ -265,6 +265,9 @@ export default function Home() {
         <h1 className="text-4xl font-bold tracking-tight text-black mb-3">Wholesale Domain Marketplace</h1>
         <p className="text-lg text-gray-600 max-w-2xl mx-auto">
           Unbeatable prices on aftermarket domains. Direct wholesale to you.
+        </p>
+        <p className="text-sm text-purple-600 max-w-2xl mx-auto mt-1">
+          Last Updated: 28/05/25 at 21:45
         </p>
       </header>
 
