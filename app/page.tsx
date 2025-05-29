@@ -22,6 +22,12 @@ const domains = [
     url: "https://gettingquote.com",
   },
   {
+    name: "YesCookies.com",
+    price: "$195",
+    minOffer: "$50",
+    url: "https://yescookies.com",
+  },
+  {
     name: "GenerateIcons.com",
     price: "$195",
     minOffer: "$50",
@@ -267,7 +273,7 @@ export default function Home() {
           Unbeatable prices on aftermarket domains. Direct wholesale to you.
         </p>
         <p className="text-sm text-purple-600 max-w-2xl mx-auto mt-1">
-          Last Updated: 29/05/25 at 18:40
+          Last Updated: 29/05/25 at 23:37
         </p>
       </header>
 
