@@ -65,9 +65,9 @@ const domains = [
   },
   {
     name: "GymSetups.com",
-    price: "$195",
-    minOffer: "$50",
-    url: "https://gymsetups.com",
+    price: "SOLD",
+    minOffer: "SOLD",
+    url: "",
   },
   {
     name: "SourcingLead.com",
@@ -267,7 +267,7 @@ export default function Home() {
           Unbeatable prices on aftermarket domains. Direct wholesale to you.
         </p>
         <p className="text-sm text-purple-600 max-w-2xl mx-auto mt-1">
-          Last Updated: 29/05/25 at 15:00
+          Last Updated: 29/05/25 at 18:40
         </p>
       </header>
 
