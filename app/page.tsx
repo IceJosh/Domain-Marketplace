@@ -279,7 +279,7 @@ export default function Home() {
           Unbeatable prices on aftermarket domains. Direct wholesale to you.
         </p>
         <p className="text-sm text-purple-600 max-w-2xl mx-auto mt-1">
-          Last Updated: 29/05/25 at 23:37
+          Last Updated: 01/06/25 at 20:19
         </p>
       </header>
 
