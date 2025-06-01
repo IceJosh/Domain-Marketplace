@@ -10,33 +10,39 @@ import { useEffect } from "react"
 // Sample domain data - replace with your actual domains
 const domains = [
   {
+    name: "JellyMakeup.com",
+    price: "$395",
+    minOffer: "$100",
+    url: "https://jellymakeup.com",
+  },
+  {
     name: "CheapestName.com",
-    price: "$195",
-    minOffer: "$50",
+    price: "$395",
+    minOffer: "$100",
     url: "https://cheapestname.com",
   },
   {
     name: "GettingQuote.com",
-    price: "$195",
-    minOffer: "$50",
+    price: "$395",
+    minOffer: "$100",
     url: "https://gettingquote.com",
   },
   {
     name: "YesCookies.com",
-    price: "$195",
-    minOffer: "$50",
+    price: "$395",
+    minOffer: "$100",
     url: "https://yescookies.com",
   },
   {
     name: "GenerateIcons.com",
-    price: "$195",
-    minOffer: "$50",
+    price: "$395",
+    minOffer: "$100",
     url: "https://generateicons.com",
   },
   {
     name: "WebsiteBooking.com",
-    price: "$195",
-    minOffer: "$50",
+    price: "$395",
+    minOffer: "$100",
     url: "https://websitebooking.com",
   },
   {
@@ -47,26 +53,26 @@ const domains = [
   },
   {
     name: "CarDrifts.com",
-    price: "$195",
-    minOffer: "$50",
+    price: "$395",
+    minOffer: "$100",
     url: "https://cardrifts.com",
   },
   {
     name: "BuildHacks.com",
-    price: "$195",
-    minOffer: "$50",
+    price: "$395",
+    minOffer: "$100",
     url: "https://buildhacks.com",
   },
   {
     name: "TalentAdvertising.com",
-    price: "$195",
-    minOffer: "$50",
+    price: "$395",
+    minOffer: "$100",
     url: "https://talentadvertising.com",
   },
   {
     name: "SilverAutocare.com",
-    price: "$195",
-    minOffer: "$50",
+    price: "$395",
+    minOffer: "$100",
     url: "https://silverautocare.com",
   },
   {
@@ -77,20 +83,20 @@ const domains = [
   },
   {
     name: "SourcingLead.com",
-    price: "$195",
-    minOffer: "$50",
+    price: "$395",
+    minOffer: "$100",
     url: "https://sourcinglead.com",
   },
   {
     name: "TripLifestyle.com",
-    price: "$195",
-    minOffer: "$50",
+    price: "$395",
+    minOffer: "$100",
     url: "https://triplifestyle.com",
   },
   {
     name: "DrawnStudio.com",
-    price: "$195",
-    minOffer: "$50",
+    price: "$395",
+    minOffer: "$100",
     url: "https://drawnstudio.com",
   },
   {
@@ -101,98 +107,98 @@ const domains = [
   },
   {
     name: "BrandPrivate.com",
-    price: "$195",
-    minOffer: "$50",
+    price: "$395",
+    minOffer: "$100",
     url: "https://brandprivate.com",
   },
   {
     name: "MediaBundles.com",
-    price: "$195",
-    minOffer: "$50",
+    price: "$395",
+    minOffer: "$100",
     url: "https://mediabundles.com",
   },
   {
     name: "PayoutLoan.com",
-    price: "$195",
-    minOffer: "$50",
+    price: "$395",
+    minOffer: "$100",
     url: "https://payoutloan.com",
   },
   {
     name: "Mineforged.com",
-    price: "$195",
-    minOffer: "$50",
+    price: "$395",
+    minOffer: "$100",
     url: "https://mineforged.com",
   },
   {
     name: "TrialChambers.com",
-    price: "$195",
-    minOffer: "$50",
+    price: "$395",
+    minOffer: "$100",
     url: "https://trialchambers.com",
   },
   {
     name: "JewelMC.com",
-    price: "$195",
-    minOffer: "$50",
+    price: "$395",
+    minOffer: "$100",
     url: "https://jewelmc.com",
   },
   {
     name: "ProjectRune.com",
-    price: "$195",
-    minOffer: "$50",
+    price: "$395",
+    minOffer: "$100",
     url: "https://projectrune.com",
   },
   {
     name: "CarResell.com",
-    price: "$195",
-    minOffer: "$50",
+    price: "$395",
+    minOffer: "$100",
     url: "https://carresell.com",
   },
   {
     name: "WaterAquarium.com",
-    price: "$195",
-    minOffer: "$50",
+    price: "$395",
+    minOffer: "$100",
     url: "https://wateraquarium.com",
   },
   {
     name: "LuggageSizes.com",
-    price: "$195",
-    minOffer: "$50",
+    price: "$395",
+    minOffer: "$100",
     url: "https://luggagesizes.com",
   },
   {
     name: "LoveBaked.com",
-    price: "$195",
-    minOffer: "$50",
+    price: "$395",
+    minOffer: "$100",
     url: "https://lovebaked.com",
   },
   {
     name: "ElitePill.com",
-    price: "$195",
-    minOffer: "$50",
+    price: "$395",
+    minOffer: "$100",
     url: "https://elitepill.com",
   },
   {
     name: "MineQuests.com",
-    price: "$195",
-    minOffer: "$50",
+    price: "$395",
+    minOffer: "$100",
     url: "https://minequests.com",
   },
   {
     name: "VaultRPG.com",
-    price: "$195",
-    minOffer: "$50",
+    price: "$395",
+    minOffer: "$100",
     url: "https://vaultrpg.com",
   },
   {
     name: "DomainExcellence.com",
-    price: "$195",
-    minOffer: "$50",
+    price: "$395",
+    minOffer: "$100",
     url: "https://domainexcellence.com",
   },
   {
     name: "RepairedHome.com",
-    price: "$195",
-    minOffer: "$50",
+    price: "$395",
+    minOffer: "$100",
     url: "https://repairedhome.com",
   },
 ]
@@ -246,7 +252,7 @@ export default function Home() {
       trackPageView()
       // Add to window for global access
       window.trackDomainInteraction = trackInteraction
-    }, 500)
+    }, 1000)
 
     return () => clearTimeout(timer)
   }, [])
@@ -293,19 +299,19 @@ export default function Home() {
                   <div className="grid grid-cols-[1fr,auto] gap-4">
                     {/* Left column - Domain name and prices */}
                     <div>
-                      <h3 className="text-lg font-medium text-black mb-4 truncate group-hover:text-purple-500 transition-colors duration-200">
+                      <h3 className="text-lg font-medium text-black mb-4 truncate group-hover:text-purple-1000 transition-colors duration-200">
                         {domain.name}
                       </h3>
 
                       <div className="space-y-3">
                         <div>
-                          <p className="text-xs uppercase font-medium text-gray-500 mb-1">Wholesale Price</p>
+                          <p className="text-xs uppercase font-medium text-gray-1000 mb-1">Wholesale Price</p>
                           <p className="text-base font-bold text-black">{domain.price}</p>
                         </div>
 
                         <div>
-                          <p className="text-xs uppercase font-medium text-gray-500 mb-1">Min Offer</p>
-                          <p className="text-sm font-medium text-purple-500 flex items-center">
+                          <p className="text-xs uppercase font-medium text-gray-1000 mb-1">Min Offer</p>
+                          <p className="text-sm font-medium text-purple-1000 flex items-center">
                             <TrendingDown className="h-3 w-3 mr-1 inline-block" />
                             {domain.minOffer}
                           </p>
@@ -316,7 +322,7 @@ export default function Home() {
                     {/* Right column - Arrow icon and button */}
                     <div className="flex flex-col items-end justify-between">
                       <div className="bg-gray-100 rounded-full h-6 w-6 flex items-center justify-center group-hover:bg-purple-100 transition-colors duration-200">
-                        <ArrowUpRight className="h-3 w-3 text-gray-500 group-hover:text-purple-500 transition-colors duration-200" />
+                        <ArrowUpRight className="h-3 w-3 text-gray-1000 group-hover:text-purple-1000 transition-colors duration-200" />
                       </div>
 
                       {domain.price === "SOLD" ? (
@@ -324,7 +330,7 @@ export default function Home() {
                           Sold
                         </Button>
                       ) : (
-                        <Button className="w-full mt-4 bg-black hover:bg-purple-500 transition-colors duration-200 h-9">
+                        <Button className="w-full mt-4 bg-black hover:bg-purple-1000 transition-colors duration-200 h-9">
                           Buy Now
                         </Button>
                       )}
@@ -337,7 +343,7 @@ export default function Home() {
         </div>
       </main>
 
-      <footer className="container mx-auto py-6 text-center text-gray-500 border-t border-gray-100 text-sm">
+      <footer className="container mx-auto py-6 text-center text-gray-1000 border-t border-gray-100 text-sm">
         <p>© {new Date().getFullYear()} UnclaimedName. All rights reserved.</p>
       </footer>
     </div>
