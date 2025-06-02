@@ -10,6 +10,12 @@ import { useEffect } from "react"
 // Sample domain data - replace with your actual domains
 const domains = [
   {
+    name: "AgentLLMs.com",
+    price: "$395",
+    minOffer: "$100",
+    url: "https://agentllms.com",
+  },
+  {
     name: "JellyMakeup.com",
     price: "$395",
     minOffer: "$100",
@@ -279,7 +285,7 @@ export default function Home() {
           Unbeatable prices on aftermarket domains. Direct wholesale to you.
         </p>
         <p className="text-sm text-purple-600 max-w-2xl mx-auto mt-1">
-          Last Updated: 01/06/25 at 20:19
+          Last Updated: 02/06/25 at 18:24
         </p>
       </header>
 
