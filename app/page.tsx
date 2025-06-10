@@ -143,9 +143,9 @@ const domains = [
   },
   {
     name: "JewelMC.com",
-    price: "$395",
-    minOffer: "$100",
-    url: "https://jewelmc.com",
+    price: "SOLD",
+    minOffer: "SOLD",
+    url: "",
   },
   {
     name: "ProjectRune.com",
