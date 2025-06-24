@@ -137,9 +137,9 @@ const domains = [
   },
   {
     name: "Mineforged.com",
-    price: "$395",
-    minOffer: "$100",
-    url: "https://mineforged.com",
+    price: "SOLD",
+    minOffer: "SOLD",
+    url: "",
   },
   {
     name: "TrialChambers.com",
