@@ -1,7 +1,7 @@
 "use client"
 
-import { useEffect, useState } from "react"
 import Link from "next/link"
+import { useEffect, useState } from "react"
 import { ArrowUpRight, TrendingDown } from "lucide-react"
 import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
@@ -99,9 +99,10 @@ export default function Home() {
     }
   }
 
-  const filteredDomains = domains.filter((domain) =>
-    showSoldOnly ? domain.price === "SOLD" : domain.price !== "SOLD"
-  )
+  // Show either all domains or only sold domains based on toggle
+  const filteredDomains = showSoldOnly
+    ? domains.filter((d) => d.price === "SOLD")
+    : domains
 
   return (
     <div className="min-h-screen bg-white">
@@ -119,7 +120,7 @@ export default function Home() {
           Unbeatable prices on aftermarket domains. Direct wholesale to you.
         </p>
         <p className="text-sm text-purple-600 max-w-2xl mx-auto mt-1">
-          Last Updated: 24/06/25 at 23:55
+          Last Updated: 23/06/25 at 23:52
         </p>
         <div className="flex justify-center items-center gap-2 mt-6">
           <Switch
@@ -202,3 +203,7 @@ export default function Home() {
 
       <footer className="container mx-auto py-6 text-center text-gray-1000 border-t border-gray-100 text-sm">
         <p>© {new Date().getFullYear()} UnclaimedName. All rights reserved.</p>
+      </footer>
+    </div>
+  )
+}
