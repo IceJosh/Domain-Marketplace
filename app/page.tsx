@@ -17,9 +17,9 @@ const domains = [
   },
   {
     name: "AgentLLMs.com",
-    price: "$395",
-    minOffer: "$100",
-    url: "https://agentllms.com",
+    price: "SOLD",
+    minOffer: "SOLD",
+    url: "",
   },
   {
     name: "JellyMakeup.com",
