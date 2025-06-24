@@ -1,41 +1,53 @@
 "use client"
 
+import { useEffect, useState } from "react"
 import Link from "next/link"
 import { ArrowUpRight, TrendingDown } from "lucide-react"
 import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
-import { useEffect, useState } from "react"
+import { Switch } from "@/components/ui/switch"
+import { Label } from "@/components/ui/label"
 
+// Full domain list
 const domains = [
-  {
-    name: "DriedSlice.com",
-    price: "$395",
-    minOffer: "$100",
-    url: "https://driedslice.com",
-  },
-  {
-    name: "AgentLLMs.com",
-    price: "SOLD",
-    minOffer: "SOLD",
-    url: "",
-  },
-  {
-    name: "JellyMakeup.com",
-    price: "$395",
-    minOffer: "$100",
-    url: "https://jellymakeup.com",
-  },
-  // ... (rest of your domain list)
-  {
-    name: "RepairedHome.com",
-    price: "$395",
-    minOffer: "$100",
-    url: "https://repairedhome.com",
-  },
+  { name: "DriedSlice.com", price: "$395", minOffer: "$100", url: "https://driedslice.com" },
+  { name: "AgentLLMs.com", price: "SOLD", minOffer: "SOLD", url: "" },
+  { name: "JellyMakeup.com", price: "$395", minOffer: "$100", url: "https://jellymakeup.com" },
+  { name: "CheapestName.com", price: "$395", minOffer: "$100", url: "https://cheapestname.com" },
+  { name: "GettingQuote.com", price: "$395", minOffer: "$100", url: "https://gettingquote.com" },
+  { name: "YesCookies.com", price: "$395", minOffer: "$100", url: "https://yescookies.com" },
+  { name: "GenerateIcons.com", price: "$395", minOffer: "$100", url: "https://generateicons.com" },
+  { name: "WebsiteBooking.com", price: "$395", minOffer: "$100", url: "https://websitebooking.com" },
+  { name: "GenerateChat.com", price: "SOLD", minOffer: "SOLD", url: "" },
+  { name: "CarDrifts.com", price: "$395", minOffer: "$100", url: "https://cardrifts.com" },
+  { name: "BuildHacks.com", price: "$395", minOffer: "$100", url: "https://buildhacks.com" },
+  { name: "TalentAdvertising.com", price: "$395", minOffer: "$100", url: "https://talentadvertising.com" },
+  { name: "SilverAutocare.com", price: "$395", minOffer: "$100", url: "https://silverautocare.com" },
+  { name: "GymSetups.com", price: "SOLD", minOffer: "SOLD", url: "" },
+  { name: "SourcingLead.com", price: "$395", minOffer: "$100", url: "https://sourcinglead.com" },
+  { name: "TripLifestyle.com", price: "$395", minOffer: "$100", url: "https://triplifestyle.com" },
+  { name: "DrawnStudio.com", price: "$395", minOffer: "$100", url: "https://drawnstudio.com" },
+  { name: "TicketBuilders.com", price: "SOLD", minOffer: "SOLD", url: "" },
+  { name: "BrandPrivate.com", price: "$395", minOffer: "$100", url: "https://brandprivate.com" },
+  { name: "MediaBundles.com", price: "$395", minOffer: "$100", url: "https://mediabundles.com" },
+  { name: "PayoutLoan.com", price: "$395", minOffer: "$100", url: "https://payoutloan.com" },
+  { name: "Mineforged.com", price: "SOLD", minOffer: "SOLD", url: "" },
+  { name: "TrialChambers.com", price: "$395", minOffer: "$100", url: "https://trialchambers.com" },
+  { name: "JewelMC.com", price: "SOLD", minOffer: "SOLD", url: "" },
+  { name: "ProjectRune.com", price: "$395", minOffer: "$100", url: "https://projectrune.com" },
+  { name: "CarResell.com", price: "$395", minOffer: "$100", url: "https://carresell.com" },
+  { name: "WaterAquarium.com", price: "$395", minOffer: "$100", url: "https://wateraquarium.com" },
+  { name: "LuggageSizes.com", price: "$395", minOffer: "$100", url: "https://luggagesizes.com" },
+  { name: "LoveBaked.com", price: "$395", minOffer: "$100", url: "https://lovebaked.com" },
+  { name: "ElitePill.com", price: "$395", minOffer: "$100", url: "https://elitepill.com" },
+  { name: "MineQuests.com", price: "$395", minOffer: "$100", url: "https://minequests.com" },
+  { name: "VaultRPG.com", price: "$395", minOffer: "$100", url: "https://vaultrpg.com" },
+  { name: "DomainExcellence.com", price: "$395", minOffer: "$100", url: "https://domainexcellence.com" },
+  { name: "RepairedHome.com", price: "$395", minOffer: "$100", url: "https://repairedhome.com" },
 ]
 
-// Type definition for window with v7Analytics
+// Global types for analytics
 declare global {
   interface Window {
     v7Analytics?: {
@@ -47,7 +59,7 @@ declare global {
 }
 
 export default function Home() {
-  const [showSold, setShowSold] = useState(true)
+  const [showSold, setShowSold] = useState(false)
 
   useEffect(() => {
     const trackPageView = () => {
@@ -59,14 +71,11 @@ export default function Home() {
           title: document.title,
           timestamp: new Date().toISOString(),
         })
-      } else {
-        console.log("V7 Analytics not available for page view")
       }
     }
 
     const trackInteraction = (domainName: string) => {
       if (typeof window !== "undefined" && window.v7Analytics) {
-        console.log(`Tracking interaction with domain: ${domainName}`)
         window.v7Analytics.trackEvent({
           event: "domain_click",
           properties: {
@@ -74,8 +83,6 @@ export default function Home() {
             timestamp: new Date().toISOString(),
           },
         })
-      } else {
-        console.log("V7 Analytics not available for domain interaction")
       }
     }
 
@@ -90,10 +97,10 @@ export default function Home() {
   const handleDomainClick = (domainName: string) => {
     if (window.trackDomainInteraction) {
       window.trackDomainInteraction(domainName)
-    } else {
-      console.log("trackDomainInteraction not available")
     }
   }
+
+  const filteredDomains = showSold ? domains : domains.filter((d) => d.price !== "SOLD")
 
   return (
     <div className="min-h-screen bg-white">
@@ -104,82 +111,74 @@ export default function Home() {
         >
           WHOLESALE PRICES
         </Badge>
-        <h1 className="text-4xl font-bold tracking-tight text-black mb-3">Wholesale Domain Marketplace</h1>
+        <h1 className="text-4xl font-bold tracking-tight text-black mb-3">
+          Wholesale Domain Marketplace
+        </h1>
         <p className="text-lg text-gray-600 max-w-2xl mx-auto">
           Unbeatable prices on aftermarket domains. Direct wholesale to you.
         </p>
         <p className="text-sm text-purple-600 max-w-2xl mx-auto mt-1">
           Last Updated: 23/06/25 at 23:52
         </p>
+        <div className="flex justify-center items-center mt-6 gap-2">
+          <Label htmlFor="showSold" className="text-sm">
+            Show Sold Domains
+          </Label>
+          <Switch id="showSold" checked={showSold} onCheckedChange={setShowSold} />
+        </div>
       </header>
 
       <main className="container mx-auto px-4 py-6 mb-12">
-        <div className="text-center mb-6">
-          <Button
-            variant="outline"
-            onClick={() => setShowSold((prev) => !prev)}
-            className="text-sm"
-          >
-            {showSold ? "Hide Sold Domains" : "Show Sold Domains"}
-          </Button>
-        </div>
-
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-          {domains
-            .filter((domain) => showSold || domain.price !== "SOLD")
-            .map((domain) => (
-              <Link
-                href={domain.url || "#"}
-                key={domain.name}
-                target="_blank"
-                rel="noopener noreferrer"
-                className={`group block ${domain.price === "SOLD" ? "pointer-events-none" : ""}`}
-                onClick={() => handleDomainClick(domain.name)}
-              >
-                <Card className="overflow-hidden border border-gray-200 hover:border-purple-300 hover:shadow-sm transition-all duration-200">
-                  <CardContent className="p-4">
-                    <div className="grid grid-cols-[1fr,auto] gap-4">
-                      <div>
-                        <h3 className="text-lg font-medium text-black mb-4 truncate group-hover:text-purple-1000 transition-colors duration-200">
-                          {domain.name}
-                        </h3>
-
-                        <div className="space-y-3">
-                          <div>
-                            <p className="text-xs uppercase font-medium text-gray-1000 mb-1">Wholesale Price</p>
-                            <p className="text-base font-bold text-black">{domain.price}</p>
-                          </div>
-
-                          <div>
-                            <p className="text-xs uppercase font-medium text-gray-1000 mb-1">Min Offer</p>
-                            <p className="text-sm font-medium text-purple-1000 flex items-center">
-                              <TrendingDown className="h-3 w-3 mr-1 inline-block" />
-                              {domain.minOffer}
-                            </p>
-                          </div>
+          {filteredDomains.map((domain) => (
+            <Link
+              href={domain.url || "#"}
+              key={domain.name}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={`group block ${domain.price === "SOLD" ? "pointer-events-none" : ""}`}
+              onClick={() => handleDomainClick(domain.name)}
+            >
+              <Card className="overflow-hidden border border-gray-200 hover:border-purple-300 hover:shadow-sm transition-all duration-200">
+                <CardContent className="p-4">
+                  <div className="grid grid-cols-[1fr,auto] gap-4">
+                    <div>
+                      <h3 className="text-lg font-medium text-black mb-4 truncate group-hover:text-purple-1000 transition-colors duration-200">
+                        {domain.name}
+                      </h3>
+                      <div className="space-y-3">
+                        <div>
+                          <p className="text-xs uppercase font-medium text-gray-1000 mb-1">Wholesale Price</p>
+                          <p className="text-base font-bold text-black">{domain.price}</p>
                         </div>
-                      </div>
-
-                      <div className="flex flex-col items-end justify-between">
-                        <div className="bg-gray-100 rounded-full h-6 w-6 flex items-center justify-center group-hover:bg-purple-100 transition-colors duration-200">
-                          <ArrowUpRight className="h-3 w-3 text-gray-1000 group-hover:text-purple-1000 transition-colors duration-200" />
+                        <div>
+                          <p className="text-xs uppercase font-medium text-gray-1000 mb-1">Min Offer</p>
+                          <p className="text-sm font-medium text-purple-1000 flex items-center">
+                            <TrendingDown className="h-3 w-3 mr-1 inline-block" />
+                            {domain.minOffer}
+                          </p>
                         </div>
-
-                        {domain.price === "SOLD" ? (
-                          <Button disabled className="w-full mt-4 bg-gray-300 text-gray-600 h-9 cursor-not-allowed">
-                            Sold
-                          </Button>
-                        ) : (
-                          <Button className="w-full mt-4 bg-black hover:bg-purple-1000 transition-colors duration-200 h-9">
-                            Buy Now
-                          </Button>
-                        )}
                       </div>
                     </div>
-                  </CardContent>
-                </Card>
-              </Link>
-            ))}
+                    <div className="flex flex-col items-end justify-between">
+                      <div className="bg-gray-100 rounded-full h-6 w-6 flex items-center justify-center group-hover:bg-purple-100 transition-colors duration-200">
+                        <ArrowUpRight className="h-3 w-3 text-gray-1000 group-hover:text-purple-1000 transition-colors duration-200" />
+                      </div>
+                      {domain.price === "SOLD" ? (
+                        <Button disabled className="w-full mt-4 bg-gray-300 text-gray-600 h-9 cursor-not-allowed">
+                          Sold
+                        </Button>
+                      ) : (
+                        <Button className="w-full mt-4 bg-black hover:bg-purple-1000 transition-colors duration-200 h-9">
+                          Buy Now
+                        </Button>
+                      )}
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+            </Link>
+          ))}
         </div>
       </main>
 
