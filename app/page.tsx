@@ -14,7 +14,7 @@ const domains = [
   { name: "DriedSlice.com", price: "$395", minOffer: "$100", url: "https://driedslice.com" },
   { name: "AgentLLMs.com", price: "SOLD", minOffer: "SOLD", url: "" },
   { name: "JellyMakeup.com", price: "$395", minOffer: "$100", url: "https://jellymakeup.com" },
-  { name: "CheapestName.com", price: "$395", minOffer: "$100", url: "https://cheapestname.com" },
+  { name: "CheapestName.com", price: "SOLD", minOffer: "SOLD", url: "" },
   { name: "GettingQuote.com", price: "$395", minOffer: "$100", url: "https://gettingquote.com" },
   { name: "YesCookies.com", price: "$395", minOffer: "$100", url: "https://yescookies.com" },
   { name: "GenerateIcons.com", price: "$395", minOffer: "$100", url: "https://generateicons.com" },
@@ -120,7 +120,7 @@ export default function Home() {
           Unbeatable prices on aftermarket domains. Direct wholesale to you.
         </p>
         <p className="text-sm text-purple-600 max-w-2xl mx-auto mt-1">
-          Last Updated: 23/06/25 at 23:52
+          Last Updated: 26/06/25 at 00:24
         </p>
         <div className="flex justify-center items-center gap-2 mt-6">
           <Switch
