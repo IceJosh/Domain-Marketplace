@@ -10,6 +10,7 @@ import { Switch } from "@/components/ui/switch"
 import { Label } from "@/components/ui/label"
 
 const domains = [
+  { name: "AgenticPrompting.com", price: "$395", minOffer: "$100", url: "https://agenticprompting.com", tag: "NEW"},
   { name: "DiceBranding.com", price: "$395", minOffer: "$100", url: "https://dicebranding.com", tag: "NEW"},
   { name: "MediaSold.com", price: "$395", minOffer: "$100", url: "https://mediasold.com", tag: "NEW"},
   { name: "MCPSources.com", price: "$395", minOffer: "$100", url: "https://mcpsources.com", tag: "NEW"},
@@ -35,7 +36,7 @@ const domains = [
   { name: "TripLifestyle.com", price: "$395", minOffer: "$100", url: "https://triplifestyle.com" },
   { name: "DrawnStudio.com", price: "$395", minOffer: "$100", url: "https://drawnstudio.com" },
   { name: "TicketBuilders.com", price: "SOLD", minOffer: "SOLD", url: "" },
-  { name: "BrandPrivate.com", price: "$395", minOffer: "$100", url: "https://brandprivate.com" },
+  { name: "BrandPrivate.com", price: "SOLD", minOffer: "SOLD", url: "" },
   { name: "StackMC.com", price: "$395", minOffer: "$100", url: "https://stackmc.com" },
   { name: "MediaBundles.com", price: "$395", minOffer: "$100", url: "https://mediabundles.com" },
   { name: "PayoutLoan.com", price: "$395", minOffer: "$100", url: "https://payoutloan.com" },
@@ -195,25 +196,27 @@ export default function Home() {
                     </div>
 
                     <div className="flex flex-col items-end justify-between">
-                      <div className="bg-gray-100 rounded-full h-6 w-6 flex items-center justify-center group-hover:bg-purple-100 transition-colors duration-200">
-                        <ArrowUpRight className="h-3 w-3 text-gray-1000 group-hover:text-purple-1000 transition-colors duration-200" />
-                      </div>
-
-                      <div className="flex items-center gap-2 w-full mt-4">
+                      <div className="flex items-center gap-2">
                         {domain.tag && (
                           <span className="bg-purple-600 text-white text-xs font-semibold px-2 py-0.5 rounded-full shadow">
                             {domain.tag}
                           </span>
                         )}
+                        <div className="bg-gray-100 rounded-full h-6 w-6 flex items-center justify-center group-hover:bg-purple-100 transition-colors duration-200">
+                          <ArrowUpRight className="h-3 w-3 text-gray-1000 group-hover:text-purple-1000 transition-colors duration-200" />
+                        </div>
+                      </div>
+
+                      <div className="w-full mt-4">
                         {domain.price === "SOLD" ? (
                           <Button
                             disabled
-                            className="flex-1 bg-gray-300 text-gray-600 h-9 cursor-not-allowed"
+                            className="w-full bg-gray-300 text-gray-600 h-9 cursor-not-allowed"
                           >
                             Sold
                           </Button>
                         ) : (
-                          <Button className="flex-1 bg-black hover:bg-purple-600 transition-colors duration-200 h-9">
+                          <Button className="w-full bg-black hover:bg-purple-600 transition-colors duration-200 h-9">
                             Buy Now
                           </Button>
                         )}
