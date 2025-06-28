@@ -8,6 +8,7 @@ import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Switch } from "@/components/ui/switch"
 import { Label } from "@/components/ui/label"
+import { useMemo } from "react"
 
 // Full domain list
 const domains = [
@@ -106,11 +107,21 @@ export default function Home() {
       window.trackDomainInteraction(domainName)
     }
   }
+  
+// Shuffle once on mount
+const shuffledDomains = useMemo(() => {
+  const shuffled = [...domains]
+  for (let i = shuffled.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1))
+    ;[shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]]
+  }
+  return shuffled
+}, [])
 
-  // Show either all domains or only sold domains based on toggle
-  const filteredDomains = showSoldOnly
-    ? domains.filter((d) => d.price === "SOLD")
-    : domains
+// Apply filter after shuffle
+const filteredDomains = showSoldOnly
+  ? shuffledDomains.filter((d) => d.price === "SOLD")
+  : shuffledDomains
 
   return (
     <div className="min-h-screen bg-white">
