@@ -105,12 +105,10 @@ export default function Home() {
     }
   }
 
-  // Shuffle once on mount, but always show NEW domains first
   const sortedDomains = useMemo(() => {
     const newDomains = domains.filter((d) => d.tag === "NEW")
     const otherDomains = domains.filter((d) => d.tag !== "NEW")
 
-    // Shuffle other domains
     for (let i = otherDomains.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1))
       ;[otherDomains[i], otherDomains[j]] = [otherDomains[j], otherDomains[i]]
@@ -167,11 +165,6 @@ export default function Home() {
               onClick={() => handleDomainClick(domain.name)}
             >
               <Card className="overflow-hidden border border-gray-200 hover:border-purple-300 hover:shadow-sm transition-all duration-200 relative">
-                {domain.tag && (
-                  <span className="absolute -top-3 left-1/2 -translate-x-1/2 bg-purple-600 text-white text-xs font-semibold px-2 py-0.5 rounded-full shadow">
-                    {domain.tag}
-                  </span>
-                )}
                 <CardContent className="p-4">
                   <div className="grid grid-cols-[1fr,auto] gap-4">
                     <div>
@@ -206,18 +199,25 @@ export default function Home() {
                         <ArrowUpRight className="h-3 w-3 text-gray-1000 group-hover:text-purple-1000 transition-colors duration-200" />
                       </div>
 
-                      {domain.price === "SOLD" ? (
-                        <Button
-                          disabled
-                          className="w-full mt-4 bg-gray-300 text-gray-600 h-9 cursor-not-allowed"
-                        >
-                          Sold
-                        </Button>
-                      ) : (
-                        <Button className="w-full mt-4 bg-black hover:bg-purple-600 transition-colors duration-200 h-9">
-                          Buy Now
-                        </Button>
-                      )}
+                      <div className="flex items-center gap-2 w-full mt-4">
+                        {domain.tag && (
+                          <span className="bg-purple-600 text-white text-xs font-semibold px-2 py-0.5 rounded-full shadow">
+                            {domain.tag}
+                          </span>
+                        )}
+                        {domain.price === "SOLD" ? (
+                          <Button
+                            disabled
+                            className="flex-1 bg-gray-300 text-gray-600 h-9 cursor-not-allowed"
+                          >
+                            Sold
+                          </Button>
+                        ) : (
+                          <Button className="flex-1 bg-black hover:bg-purple-600 transition-colors duration-200 h-9">
+                            Buy Now
+                          </Button>
+                        )}
+                      </div>
                     </div>
                   </div>
                 </CardContent>
