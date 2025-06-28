@@ -1,21 +1,20 @@
 "use client"
 
 import Link from "next/link"
-import { useEffect, useState } from "react"
+import { useEffect, useState, useMemo } from "react"
 import { ArrowUpRight, TrendingDown } from "lucide-react"
 import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Switch } from "@/components/ui/switch"
 import { Label } from "@/components/ui/label"
-import { useMemo } from "react"
 
-// Full domain list
+// Full domain list with optional `tag`
 const domains = [
-  { name: "DiceBranding.com", price: "$395", minOffer: "$100", url: "https://dicebranding.com" },
-  { name: "MediaSold.com", price: "$395", minOffer: "$100", url: "https://mediasold.com" },
-  { name: "MCPSources.com", price: "$395", minOffer: "$100", url: "https://mcpsources.com" },
-  { name: "MCPSignature.com", price: "$395", minOffer: "$100", url: "https://mcpsignature.com" },
+  { name: "DiceBranding.com", price: "$395", minOffer: "$100", url: "https://dicebranding.com", tag: "NEW"},
+  { name: "MediaSold.com", price: "$395", minOffer: "$100", url: "https://mediasold.com", tag: "NEW"},
+  { name: "MCPSources.com", price: "$395", minOffer: "$100", url: "https://mcpsources.com", tag: "NEW"},
+  { name: "MCPSignature.com", price: "$395", minOffer: "$100", url: "https://mcpsignature.com", tag: "NEW"},
   { name: "DriedSlice.com", price: "$395", minOffer: "$100", url: "https://driedslice.com" },
   { name: "AgentLLMs.com", price: "SOLD", minOffer: "SOLD", url: "" },
   { name: "JellyMakeup.com", price: "$395", minOffer: "$100", url: "https://jellymakeup.com" },
@@ -28,7 +27,7 @@ const domains = [
   { name: "WebsiteBooking.com", price: "$395", minOffer: "$100", url: "https://websitebooking.com" },
   { name: "GenerateChat.com", price: "SOLD", minOffer: "SOLD", url: "" },
   { name: "CarDrifts.com", price: "$395", minOffer: "$100", url: "https://cardrifts.com" },
-  { name: "RelayShield.com", price: "$395", minOffer: "$100", url: "https://relayshield.com" },
+  { name: "RelayShield.com", price: "$395", minOffer: "$100", url: "https://relayshield.com", tag: "NEW"},
   { name: "BuildHacks.com", price: "$395", minOffer: "$100", url: "https://buildhacks.com" },
   { name: "TalentAdvertising.com", price: "$395", minOffer: "$100", url: "https://talentadvertising.com" },
   { name: "SilverAutocare.com", price: "$395", minOffer: "$100", url: "https://silverautocare.com" },
@@ -107,21 +106,21 @@ export default function Home() {
       window.trackDomainInteraction(domainName)
     }
   }
-  
-// Shuffle once on mount
-const shuffledDomains = useMemo(() => {
-  const shuffled = [...domains]
-  for (let i = shuffled.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1))
-    ;[shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]]
-  }
-  return shuffled
-}, [])
 
-// Apply filter after shuffle
-const filteredDomains = showSoldOnly
-  ? shuffledDomains.filter((d) => d.price === "SOLD")
-  : shuffledDomains
+  // Shuffle once on mount
+  const shuffledDomains = useMemo(() => {
+    const shuffled = [...domains]
+    for (let i = shuffled.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1))
+      ;[shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]]
+    }
+    return shuffled
+  }, [])
+
+  // Apply filter after shuffle
+  const filteredDomains = showSoldOnly
+    ? shuffledDomains.filter((d) => d.price === "SOLD")
+    : shuffledDomains
 
   return (
     <div className="min-h-screen bg-white">
@@ -170,9 +169,17 @@ const filteredDomains = showSoldOnly
                 <CardContent className="p-4">
                   <div className="grid grid-cols-[1fr,auto] gap-4">
                     <div>
-                      <h3 className="text-lg font-medium text-black mb-4 truncate group-hover:text-purple-1000 transition-colors duration-200">
-                        {domain.name}
-                      </h3>
+                      <div className="flex items-center justify-between mb-4">
+                        <h3 className="text-lg font-medium text-black truncate group-hover:text-purple-1000 transition-colors duration-200">
+                          {domain.name}
+                        </h3>
+                        {domain.tag && (
+                          <span className="ml-2 inline-block bg-purple-600 text-white text-xs font-semibold px-2 py-0.5 rounded-full">
+                            {domain.tag}
+                          </span>
+                        )}
+                      </div>
+
                       <div className="space-y-3">
                         <div>
                           <p className="text-xs uppercase font-medium text-gray-1000 mb-1">
