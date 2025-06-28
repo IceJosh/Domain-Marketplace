@@ -11,18 +11,23 @@ import { Label } from "@/components/ui/label"
 
 // Full domain list
 const domains = [
+  { name: "DiceBranding.com", price: "$395", minOffer: "$100", url: "https://dicebranding.com" },
+  { name: "MediaSold.com", price: "$395", minOffer: "$100", url: "https://mediasold.com" },
   { name: "MCPSources.com", price: "$395", minOffer: "$100", url: "https://mcpsources.com" },
   { name: "MCPSignature.com", price: "$395", minOffer: "$100", url: "https://mcpsignature.com" },
   { name: "DriedSlice.com", price: "$395", minOffer: "$100", url: "https://driedslice.com" },
   { name: "AgentLLMs.com", price: "SOLD", minOffer: "SOLD", url: "" },
   { name: "JellyMakeup.com", price: "$395", minOffer: "$100", url: "https://jellymakeup.com" },
+  { name: "AssetsStudio.com", price: "$395", minOffer: "$100", url: "https://assetsstudio.com" },
   { name: "CheapestName.com", price: "SOLD", minOffer: "SOLD", url: "" },
   { name: "GettingQuote.com", price: "$395", minOffer: "$100", url: "https://gettingquote.com" },
   { name: "YesCookies.com", price: "$395", minOffer: "$100", url: "https://yescookies.com" },
+  { name: "CarTrending.com", price: "$395", minOffer: "$100", url: "https://cartrending.com" },
   { name: "GenerateIcons.com", price: "$395", minOffer: "$100", url: "https://generateicons.com" },
   { name: "WebsiteBooking.com", price: "$395", minOffer: "$100", url: "https://websitebooking.com" },
   { name: "GenerateChat.com", price: "SOLD", minOffer: "SOLD", url: "" },
   { name: "CarDrifts.com", price: "$395", minOffer: "$100", url: "https://cardrifts.com" },
+  { name: "RelayShield.com", price: "$395", minOffer: "$100", url: "https://relayshield.com" },
   { name: "BuildHacks.com", price: "$395", minOffer: "$100", url: "https://buildhacks.com" },
   { name: "TalentAdvertising.com", price: "$395", minOffer: "$100", url: "https://talentadvertising.com" },
   { name: "SilverAutocare.com", price: "$395", minOffer: "$100", url: "https://silverautocare.com" },
@@ -32,6 +37,7 @@ const domains = [
   { name: "DrawnStudio.com", price: "$395", minOffer: "$100", url: "https://drawnstudio.com" },
   { name: "TicketBuilders.com", price: "SOLD", minOffer: "SOLD", url: "" },
   { name: "BrandPrivate.com", price: "$395", minOffer: "$100", url: "https://brandprivate.com" },
+  { name: "StackMC.com", price: "$395", minOffer: "$100", url: "https://stackmc.com" },
   { name: "MediaBundles.com", price: "$395", minOffer: "$100", url: "https://mediabundles.com" },
   { name: "PayoutLoan.com", price: "$395", minOffer: "$100", url: "https://payoutloan.com" },
   { name: "Mineforged.com", price: "SOLD", minOffer: "SOLD", url: "" },
@@ -122,7 +128,7 @@ export default function Home() {
           Unbeatable prices on aftermarket domains. Direct wholesale to you.
         </p>
         <p className="text-sm text-purple-600 max-w-2xl mx-auto mt-1">
-          Last Updated: 26/06/25 at 23:33
+          Last Updated: 28/06/25 at 09:42
         </p>
         <div className="flex justify-center items-center gap-2 mt-6">
           <Switch
