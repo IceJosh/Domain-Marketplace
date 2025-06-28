@@ -9,7 +9,6 @@ import { Button } from "@/components/ui/button"
 import { Switch } from "@/components/ui/switch"
 import { Label } from "@/components/ui/label"
 
-// Full domain list with optional `tag`
 const domains = [
   { name: "DiceBranding.com", price: "$395", minOffer: "$100", url: "https://dicebranding.com", tag: "NEW"},
   { name: "MediaSold.com", price: "$395", minOffer: "$100", url: "https://mediasold.com", tag: "NEW"},
@@ -55,7 +54,6 @@ const domains = [
   { name: "RepairedHome.com", price: "$395", minOffer: "$100", url: "https://repairedhome.com" },
 ]
 
-// Global types for analytics
 declare global {
   interface Window {
     v7Analytics?: {
@@ -107,20 +105,23 @@ export default function Home() {
     }
   }
 
-  // Shuffle once on mount
-  const shuffledDomains = useMemo(() => {
-    const shuffled = [...domains]
-    for (let i = shuffled.length - 1; i > 0; i--) {
+  // Shuffle once on mount, but always show NEW domains first
+  const sortedDomains = useMemo(() => {
+    const newDomains = domains.filter((d) => d.tag === "NEW")
+    const otherDomains = domains.filter((d) => d.tag !== "NEW")
+
+    // Shuffle other domains
+    for (let i = otherDomains.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1))
-      ;[shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]]
+      ;[otherDomains[i], otherDomains[j]] = [otherDomains[j], otherDomains[i]]
     }
-    return shuffled
+
+    return [...newDomains, ...otherDomains]
   }, [])
 
-  // Apply filter after shuffle
   const filteredDomains = showSoldOnly
-    ? shuffledDomains.filter((d) => d.price === "SOLD")
-    : shuffledDomains
+    ? sortedDomains.filter((d) => d.price === "SOLD")
+    : sortedDomains
 
   return (
     <div className="min-h-screen bg-white">
@@ -160,12 +161,17 @@ export default function Home() {
               key={domain.name}
               target="_blank"
               rel="noopener noreferrer"
-              className={`group block ${
+              className={`group block relative ${
                 domain.price === "SOLD" ? "pointer-events-none" : ""
               }`}
               onClick={() => handleDomainClick(domain.name)}
             >
-              <Card className="overflow-hidden border border-gray-200 hover:border-purple-300 hover:shadow-sm transition-all duration-200">
+              <Card className="overflow-hidden border border-gray-200 hover:border-purple-300 hover:shadow-sm transition-all duration-200 relative">
+                {domain.tag && (
+                  <span className="absolute -top-3 left-1/2 -translate-x-1/2 bg-purple-600 text-white text-xs font-semibold px-2 py-0.5 rounded-full shadow">
+                    {domain.tag}
+                  </span>
+                )}
                 <CardContent className="p-4">
                   <div className="grid grid-cols-[1fr,auto] gap-4">
                     <div>
@@ -173,13 +179,7 @@ export default function Home() {
                         <h3 className="text-lg font-medium text-black truncate group-hover:text-purple-1000 transition-colors duration-200">
                           {domain.name}
                         </h3>
-                        {domain.tag && (
-                          <span className="ml-2 inline-block bg-purple-600 text-white text-xs font-semibold px-2 py-0.5 rounded-full">
-                            {domain.tag}
-                          </span>
-                        )}
                       </div>
-
                       <div className="space-y-3">
                         <div>
                           <p className="text-xs uppercase font-medium text-gray-1000 mb-1">
