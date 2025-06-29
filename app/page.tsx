@@ -10,6 +10,7 @@ import { Switch } from "@/components/ui/switch"
 import { Label } from "@/components/ui/label"
 
 const domains = [
+  { name: "BlueRasp.com", price: "$395", minOffer: "$100", url: "https://bluerasp.com", tag: "NEW"},
   { name: "AgenticPrompting.com", price: "$395", minOffer: "$100", url: "https://agenticprompting.com", tag: "NEW"},
   { name: "DiceBranding.com", price: "$395", minOffer: "$100", url: "https://dicebranding.com", tag: "NEW"},
   { name: "MediaSold.com", price: "$395", minOffer: "$100", url: "https://mediasold.com", tag: "NEW"},
