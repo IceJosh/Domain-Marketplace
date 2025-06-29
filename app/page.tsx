@@ -139,7 +139,7 @@ export default function Home() {
           Unbeatable prices on aftermarket domains. Direct wholesale to you.
         </p>
         <p className="text-sm text-purple-600 max-w-2xl mx-auto mt-1">
-          Last Updated: 28/06/25 at 09:42
+          Last Updated: 29/06/25 at 02:07
         </p>
         <div className="flex justify-center items-center gap-2 mt-6">
           <Switch
