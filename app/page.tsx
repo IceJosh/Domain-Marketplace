@@ -10,6 +10,7 @@ import { Switch } from "@/components/ui/switch"
 import { Label } from "@/components/ui/label"
 
 const domains = [
+  { name: "SupportChats.com", price: "$395", minOffer: "$100", url: "https://supportchats.com", tag: "NEW"},
   { name: "BlueRasp.com", price: "$395", minOffer: "$100", url: "https://bluerasp.com", tag: "NEW"},
   { name: "AgenticPrompting.com", price: "$395", minOffer: "$100", url: "https://agenticprompting.com", tag: "NEW"},
   { name: "DiceBranding.com", price: "$395", minOffer: "$100", url: "https://dicebranding.com", tag: "NEW"},
@@ -139,7 +140,7 @@ export default function Home() {
           Unbeatable prices on aftermarket domains. Direct wholesale to you.
         </p>
         <p className="text-sm text-purple-600 max-w-2xl mx-auto mt-1">
-          Last Updated: 29/06/25 at 02:07
+          Last Updated: 03/07/25 at 22:34
         </p>
         <div className="flex justify-center items-center gap-2 mt-6">
           <Switch
